@@ -18,3 +18,5 @@ class MyApp (wx.App) :
 
 app = MyApp
 app.MainLoop()
+
+#write my app!
