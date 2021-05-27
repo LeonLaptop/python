@@ -3,7 +3,6 @@ import sys
 def Handelskalkulation():
     bzp1 = float(input("Geben Sie ihren Bezugspreis in € ein: \n"))
     hkz = float(input("Handlungskosten in % eingeben: \n"))
-    gz = float(input("Gewinnzuschlag \n"))
     rs = float(input("Höhe des Rabattsatzes in %: \n"))
     sks_hk = float (input("Skonto in %: \n"))
     mwsts_hk = 19
@@ -36,3 +35,4 @@ def Bezugskalkulation():
     print("Bezugspreis in €: ", round(esp, 2))
 
 
+Handelskalkulation()
