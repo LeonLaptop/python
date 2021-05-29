@@ -1,6 +1,6 @@
 # python
 
-oficcial repository of python task 1.
-GUI implemented with mxpython.
+repository of python task
+GUI implemented with tkinter
 
-created with <3 by Leon Schmidt
+created by Leon Schmidt
