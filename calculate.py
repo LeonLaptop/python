@@ -1,38 +1,51 @@
-import sys
+def Auswahl():
+    Auswahl = input(" Anwendungsentwicklung: \n \n Bitte wählen Sie eine Zahl. \n 1 = Bezugskalkulation \n 2 = Verkaufskalkulation \n Eingabe: ")
+    print("")
+    if(Auswahl == "2"):
+        Verkaufskalkulation()
+    elif(Auswahl == "1"):
+        Bezugskalkulation()
+    else:
+        print("Du musst eine Auswahl treffen.")
 
-def Handelskalkulation():
-    bzp1 = float(input("Geben Sie ihren Bezugspreis in € ein: \n"))
-    hkz = float(input("Handlungskosten in % eingeben: \n"))
-    rs = float(input("Höhe des Rabattsatzes in %: \n"))
-    sks_hk = float (input("Skonto in %: \n"))
-    mwsts_hk = 19
-
-    # Verkaufskalkulation
-    bvkp = bzp1*(hkz/100+1)
-    print("Barverkaufspreis in €: ", round(bvkp, 2))
-    zvkp = ((bvkp * 100)/(100-sks_hk))
-    print("Zielverkaufspreis in €: ", round(zvkp, 2))
-    nvkp = ((zvkp*100)/(100-rs))
-    print("Listenverkaufspreis netto in €: ", round(nvkp, 2))
-    bvkp = ((nvkp*100)/(100-mwsts_hk))
-    print("Listenverkaufspreis bruto in €: ", round(bvkp, 2))
 
 def Bezugskalkulation():
-    blp = float(input("Listeneinkaufspreis in €: \n"))
-    mwsts_bz = 19
-    rbs = float(input("Lieferrabatt: \n"))
-    sks_bz = float (input("Skonto in %: \n"))
-    bk = float(input("Bezugskosten: \n"))
+    print("Bezugskalkulation: \n")
+    preis = float(input("Bitte geben Sie ihren Listeneinkaufspreis ein: \n")) # 1875 €
+    rabatt = float(input("Bitte geben Sie ihren Rabatt ein: \n")) # 0.05 %
+    skonto = float(input("Bitte geben Sie ihren Skonto ein: \n")) # 0.03 %
+    bezugskosten = float(input("Bitte geben Sie ihren Bezugskosten ein: \n")) # 56 €
 
-    # Bezugskalkulation
-    nlp = blp*((100-mwsts_bz)/100)
-    print("Listeneinkaufspreis in €: ", round(nlp, 2))
-    zep = nlp*((100-rbs)/100)
-    print("Zieleinkaufspreis in €: ", round(zep, 2))
-    bek = zep * ((100-sks_bz)/100)
-    print("Bareinkaufspreis on €: ", round(bek, 2))
-    esp = bek + bk
-    print("Bezugspreis in €: ", round(esp, 2))
+    print("Listeneinkaufspreis: " + str(round(preis, 2)))
+    zieleinkaufspreis = rabatt * preis
+    zieleinkaufspreis = preis - zieleinkaufspreis
+    print("Zieleinkaufspreis: " + str(round(zieleinkaufspreis, 2)))
+    bareinkaufspreis = skonto * zieleinkaufspreis
+    bareinkaufspreis = zieleinkaufspreis - bareinkaufspreis
+    print("Bareinkaufspreis: " + str(round(bareinkaufspreis)))
+    bezugspreis = bareinkaufspreis + bezugskosten
+    print("Bezugspreis: " + str(round(bezugspreis, 2)))
 
+def Verkaufskalkulation():
+    print("Verkaufskalkulation: \n")
+    preis = float(input("Bezugspreis in €: \n"))
+    handlungsgemeinkosten = float(input("Handlungskosten in dezimal: \n"))
+    gewinn = float(input("Gewinn in dezimal: \n"))
+    skonto = float(input("Skonto in dezimal: "))
+    rabatt = float(input("Rabatt in dezimal: \n"))
 
-Handelskalkulation()
+    selbstkostenpreis = handlungsgemeinkosten * preis
+    print(round(selbstkostenpreis, 2))
+    selbstkostenpreis = preis + selbstkostenpreis
+    print(round(selbstkostenpreis, 2))
+    barverkaufspreis = gewinn * selbstkostenpreis
+    barverkaufspreis = selbstkostenpreis + barverkaufspreis
+    print(round(barverkaufspreis, 2))
+    zielverkaufspreis = skonto * barverkaufspreis
+    zielverkaufspreis = barverkaufspreis + zielverkaufspreis
+    print(zielverkaufspreis)
+    listenverkaufspreis = zielverkaufspreis * rabatt
+    listenverkaufspreis = listenverkaufspreis + zielverkaufspreis
+    print(listenverkaufspreis)
+
+Auswahl()
